@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">FinanzasEnCasaLogin</string>
+    <string name="email">Email</string>
+    <string name="password">Contraseña</string>
+    <string name="login">Iniciar Sesión</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="bienvenida">¡Bienvenidx!</string>
+    <string name="bienvenida2">Ingrese a continuación sus credenciales</string>
+    <string name="olvidastePass">¿Olvidaste tu contraseña?</string>
+    <string name="loginRedes">O iniciar con</string>
+</resources>
