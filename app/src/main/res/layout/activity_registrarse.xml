@@ -31,7 +31,7 @@
         android:id="@+id/imageView"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="28dp"
         android:contentDescription="@string/register_user_img"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,8 +61,8 @@
         android:layout_marginEnd="32dp"
         android:backgroundTint="@color/white"
         android:ems="10"
+        android:hint="@string/register_nombre"
         android:inputType="text"
-        android:text="@string/register_nombre"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="20sp"
@@ -79,8 +79,8 @@
         android:layout_marginEnd="32dp"
         android:backgroundTint="@color/white"
         android:ems="10"
+        android:hint="@string/register_apellido"
         android:inputType="text"
-        android:text="@string/register_apellido"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="20sp"
@@ -97,8 +97,8 @@
         android:layout_marginEnd="32dp"
         android:backgroundTint="@color/white"
         android:ems="10"
+        android:hint="@string/register_edad"
         android:inputType="number"
-        android:text="@string/register_edad"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="20sp"
@@ -123,6 +123,7 @@
             android:layout_width="131dp"
             android:layout_height="wrap_content"
             android:text="@string/rbFemenino"
+            app:buttonTint="@color/white"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -131,6 +132,7 @@
             android:layout_width="136dp"
             android:layout_height="wrap_content"
             android:text="@string/rbMasculino"
+            app:buttonTint="@color/white"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -139,6 +141,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/rbOtro"
+            app:buttonTint="@color/white"
             android:textColor="@color/white"
             android:textSize="18sp" />
     </RadioGroup>
@@ -197,7 +200,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="32dp"
         android:buttonTint="@color/white"
         android:text="@string/terminosYcondiciones"
@@ -209,16 +212,18 @@
         app:layout_constraintTop_toBottomOf="@+id/txtRegisterPassConfirm" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnAccept"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="32dp"
+        android:layout_marginBottom="40dp"
         android:backgroundTint="@color/white"
-        android:text="Aceptar"
+        android:text="@string/btnAceptar"
         android:textColor="@color/naranjaest"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ckbCondiciones" />

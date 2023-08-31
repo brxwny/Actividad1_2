@@ -23,4 +23,5 @@
     <string name="txtGenero">Género:</string>
     <string name="RegisterPassConfirm">Confirme su contraseña</string>
     <string name="terminosYcondiciones">Acepto los términos y condiciones</string>
+    <string name="btnAceptar">Aceptar</string>
 </resources>
