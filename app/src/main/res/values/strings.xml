@@ -24,4 +24,6 @@
     <string name="RegisterPassConfirm">Confirme su contraseña</string>
     <string name="terminosYcondiciones">Acepto los términos y condiciones</string>
     <string name="btnAceptar">Aceptar</string>
+    <string name="addingNuevoRegistro">Creando nuevo usuario...</string>
+    <string name="pleaseWait">Por favor espere a que el proceso haya finalizado.</string>
 </resources>
