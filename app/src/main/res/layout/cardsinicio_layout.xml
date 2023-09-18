@@ -41,7 +41,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp"
-                android:textColor="@color/black"
+                android:textColor="@color/cardviewlett"
                 android:textStyle="bold"
                 android:textSize="30sp"/>
 
