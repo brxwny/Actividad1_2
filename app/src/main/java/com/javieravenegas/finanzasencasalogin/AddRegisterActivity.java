@@ -2,10 +2,12 @@ package com.javieravenegas.finanzasencasalogin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -30,8 +32,17 @@ public class AddRegisterActivity extends AppCompatActivity {
                 pgbar.setProgress(contador);
 
                 if (contador == 100){
-
                     t.cancel();
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(AddRegisterActivity.this, "Usuario agregado correctamente", Toast.LENGTH_LONG).show();
+
+                            Intent intent = new Intent(AddRegisterActivity.this, MainActivity.class);
+                            startActivity(intent);
+                        }
+                    });
                 }
             }
         };
