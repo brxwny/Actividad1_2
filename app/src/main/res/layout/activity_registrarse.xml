@@ -125,30 +125,30 @@
 
             <RadioButton
                 android:id="@+id/rbFemenino"
-                android:layout_width="131dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="@string/rbFemenino"
-                app:buttonTint="@color/white"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                app:buttonTint="@color/white" />
 
             <RadioButton
                 android:id="@+id/rbMasculino"
-                android:layout_width="136dp"
+                android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:text="@string/rbMasculino"
-                app:buttonTint="@color/white"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                app:buttonTint="@color/white" />
 
             <RadioButton
                 android:id="@+id/rbOtro"
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/rbOtro"
-                app:buttonTint="@color/white"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                app:buttonTint="@color/white" />
         </RadioGroup>
 
         <TextView
