@@ -31,7 +31,7 @@ public class InicioActivity extends AppCompatActivity {
         for (int i = 0; i < MyData.nombreInArray.length; i++) {
             data.add(new DataModel(MyData.nombreInArray[i], MyData.drawableInArray[i]));
         }
-        adapter = new CustomAdapter(data);
+        adapter = new CustomAdapter(this, data);
         recyclerView.setAdapter(adapter);
     }
 }

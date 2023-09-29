@@ -1,5 +1,7 @@
 package com.javieravenegas.finanzasencasalogin;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,8 @@ import java.util.ArrayList;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder>{
 
     private ArrayList<DataModel> dataSet;
+    private Context context;
+    private LayoutInflater inflater;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView txtCvInicio;
@@ -26,8 +30,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         }
     }
 
-    public CustomAdapter(ArrayList<DataModel> data) {
+    public CustomAdapter(Context context, ArrayList<DataModel> data) {
+        this.context = context;
         this.dataSet = data;
+        this.inflater = LayoutInflater.from(context);
     }
 
     @Override
@@ -44,6 +50,19 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
         txtCvInicio.setText(dataSet.get(listPosition).getNombre());
         imgCvInicio.setImageResource(dataSet.get(listPosition).getImagen());
+
+        final int finalListPosition = listPosition;
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (finalListPosition >= 0 && finalListPosition < MyData.interactInArray.length){
+                    Class<?> targetActivityClass = MyData.interactInArray[finalListPosition];
+
+                    Intent i = new Intent(v.getContext(), targetActivityClass);
+                    v.getContext().startActivity(i);
+                }
+            }
+        });
     }
 
     @Override
