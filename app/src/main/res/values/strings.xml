@@ -28,4 +28,7 @@
     <string name="pleaseWait">Por favor espere a que el proceso haya finalizado.</string>
     <string name="by">by</string>
     <string name="creador">Javiera Venegas</string>
+    <string name="ingresosTusIngresos">Ingresos</string>
+    <string name="add">Añadir</string>
+    <string name="gastosTusGastos">Gastos</string>
 </resources>
