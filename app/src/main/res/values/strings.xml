@@ -31,4 +31,5 @@
     <string name="ingresosTusIngresos">Ingresos</string>
     <string name="add">Añadir</string>
     <string name="gastosTusGastos">Gastos</string>
+    <string name="TusEstadisticas">Tus estadísticas</string>
 </resources>
