@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FinanzasEnCasaLogin</string>
+    <string name="app_name">Finanzas en Casa</string>
     <string name="email">Correo electrónico</string>
     <string name="password">Contraseña</string>
     <string name="login">Iniciar Sesión</string>
