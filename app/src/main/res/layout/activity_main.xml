@@ -26,8 +26,8 @@
 
         <ImageButton
             android:id="@+id/btnface"
-            android:layout_width="73dp"
-            android:layout_height="73dp"
+            android:layout_width="63dp"
+            android:layout_height="63dp"
             android:layout_marginStart="30dp"
             android:layout_marginBottom="22dp"
             android:background="@drawable/btn_social"
@@ -40,8 +40,8 @@
 
         <ImageButton
             android:id="@+id/btngoogle"
-            android:layout_width="73dp"
-            android:layout_height="73dp"
+            android:layout_width="63dp"
+            android:layout_height="63dp"
             android:layout_marginBottom="22dp"
             android:background="@drawable/btn_social"
             android:contentDescription="@string/descripcionGoogle"
@@ -56,7 +56,7 @@
             android:id="@+id/txtBienvenida"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="7dp"
             android:text="@string/bienvenida"
             android:textColor="@color/white"
             android:textSize="38sp"
@@ -69,7 +69,7 @@
             android:id="@+id/logoLogin"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="10dp"
             android:contentDescription="@string/descripcionLogo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
@@ -82,7 +82,7 @@
             android:layout_width="320dp"
             android:layout_height="55dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="95dp"
+            android:layout_marginTop="89dp"
             android:layout_marginEnd="32dp"
             android:backgroundTint="@color/white"
             android:ems="10"
@@ -100,7 +100,7 @@
             android:layout_width="320dp"
             android:layout_height="56dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
             android:backgroundTint="@color/white"
             android:ems="10"
@@ -169,8 +169,8 @@
 
         <ImageButton
             android:id="@+id/btntwt"
-            android:layout_width="73dp"
-            android:layout_height="73dp"
+            android:layout_width="63dp"
+            android:layout_height="63dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="22dp"
             android:background="@drawable/btn_social"
