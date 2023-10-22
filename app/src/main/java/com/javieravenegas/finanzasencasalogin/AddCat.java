@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -86,6 +87,8 @@ public class AddCat extends AppCompatActivity {
         MyData.imgCatFinArray = Arrays.copyOf(MyData.imgCatFinArray, MyData.imgCatFinArray.length + 1);
         MyData.catFinCvArray[MyData.catFinCvArray.length - 1] = nombreCat;
         MyData.imgCatFinArray[MyData.imgCatFinArray.length - 1] = getResources().getIdentifier(nombreimg, "drawable", getPackageName());
+
+        //getFilesDir() + "/" + nombreimg
 
         Intent in = new Intent(AddCat.this, InicioActivity.class);
         startActivity(in);
