@@ -5,7 +5,10 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import java.util.ArrayList;
 
@@ -15,6 +18,7 @@ public class TusFinanzas extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private static RecyclerView recyclerView;
     private static ArrayList<DataModel> data;
+    private Button addCat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,5 +37,15 @@ public class TusFinanzas extends AppCompatActivity {
         }
         adapter = new CusAdapterFinanzas(this, data);
         recyclerView.setAdapter(adapter);
+
+        addCat = (Button) findViewById(R.id.btnAddCategoria);
+
+        addCat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vie) {
+                Intent in = new Intent(TusFinanzas.this, AddCat.class);
+                startActivity(in);
+            }
+        });
     }
 }
