@@ -90,7 +90,7 @@ public class AddCat extends AppCompatActivity {
 
         //getFilesDir() + "/" + nombreimg
 
-        Intent in = new Intent(AddCat.this, InicioActivity.class);
+        Intent in = new Intent(AddCat.this, TusFinanzas.class);
         startActivity(in);
     }
 }

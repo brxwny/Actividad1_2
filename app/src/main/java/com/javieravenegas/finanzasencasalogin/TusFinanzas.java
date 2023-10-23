@@ -20,6 +20,7 @@ public class TusFinanzas extends AppCompatActivity {
     private static RecyclerView recyclerView;
     private static ArrayList<DataModel> data;
     private Button addCat;
+    private Button cotizar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,15 @@ public class TusFinanzas extends AppCompatActivity {
             @Override
             public void onClick(View vie) {
                 Intent in = new Intent(TusFinanzas.this, AddCat.class);
+                startActivity(in);
+            }
+        });
+
+        cotizar = (Button) findViewById(R.id.btnCotizar);
+        cotizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(TusFinanzas.this, CotizarActivity.class);
                 startActivity(in);
             }
         });
