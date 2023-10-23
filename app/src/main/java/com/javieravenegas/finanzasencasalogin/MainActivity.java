@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
+    private EditText correo;
     private Button registrarse;
     private Button iniciar;
     @Override
@@ -17,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         registrarse = (Button) findViewById(R.id.btnRegistrarse);
         iniciar = (Button)findViewById(R.id.btnLogin);
+        correo = (EditText)findViewById(R.id.txtCorreo);
 
         registrarse.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View vi) {
                 Intent in = new Intent(MainActivity.this, InicioActivity.class);
+                in.putExtra("correo", correo.getText().toString());
                 startActivity(in);
             }
         });

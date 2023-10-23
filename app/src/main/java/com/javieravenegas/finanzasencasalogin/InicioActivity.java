@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -17,11 +18,19 @@ public class InicioActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private static RecyclerView recyclerView;
     private static ArrayList<DataModel> data;
+
+    private Bundle bundle;
+    private TextView fuenteDatos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setContentView(R.layout.activity_inicio);
+
+        fuenteDatos = (TextView)findViewById(R.id.txtFuenteIn);
+        bundle = getIntent().getExtras();
+        String correoUser = bundle.getString("correo");
+        fuenteDatos.append("Basadas en datos correspondientes a la cuenta de " + correoUser);
 
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(true);
