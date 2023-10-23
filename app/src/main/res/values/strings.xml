@@ -36,4 +36,6 @@
     <string name="cotizar">Cotizar</string>
     <string name="inversiones">Inversiones</string>
     <string name="cat">Categorías</string>
+    <string name="saveConfig">Guardar cambios</string>
+    <string name="infoConfig">Información de la cuenta</string>
 </resources>
