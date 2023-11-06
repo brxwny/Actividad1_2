@@ -7,19 +7,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class TusIngresos extends AppCompatActivity {
+public class TusInversiones extends AppCompatActivity {
 
-    private Button addIngreso;
+    private Button addInversion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tus_ingresos);
+        setContentView(R.layout.activity_tus_inversiones);
 
-        addIngreso = (Button) findViewById(R.id.btnAddIngreso);
-        addIngreso.setOnClickListener(new View.OnClickListener() {
+        addInversion = (Button) findViewById(R.id.btnAddInversion);
+        addInversion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(TusIngresos.this, AddIngreso.class);
+                Intent in = new Intent(TusInversiones.this, AddInversion.class);
                 startActivity(in);
             }
         });

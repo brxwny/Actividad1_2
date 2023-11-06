@@ -18,9 +18,25 @@
         android:theme="@style/Theme.FinanzasEnCasaLogin"
         tools:targetApi="31">
         <activity
-            android:name=".CotizarActivity"
+            android:name=".AddInversion"
             android:exported="false"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".AddIngreso"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".AddGasto"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".TusInversiones"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".CotizarActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".AddCat"
             android:exported="false"

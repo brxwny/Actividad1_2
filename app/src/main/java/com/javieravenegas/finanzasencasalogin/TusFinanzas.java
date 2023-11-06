@@ -21,6 +21,7 @@ public class TusFinanzas extends AppCompatActivity {
     private static ArrayList<DataModel> data;
     private Button addCat;
     private Button cotizar;
+    private  Button inversiones;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,15 @@ public class TusFinanzas extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent in = new Intent(TusFinanzas.this, CotizarActivity.class);
+                startActivity(in);
+            }
+        });
+
+        inversiones = (Button) findViewById(R.id.btnInversiones);
+        inversiones.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(TusFinanzas.this, TusInversiones.class);
                 startActivity(in);
             }
         });
