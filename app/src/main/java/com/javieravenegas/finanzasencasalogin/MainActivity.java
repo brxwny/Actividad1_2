@@ -66,8 +66,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void verificarCredenciales(final String correo, final String pass) {
         databaseReference.child("Usuario").orderByChild("correo").equalTo(correo).addListenerForSingleValueEvent(new ValueEventListener() {
-
-
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
