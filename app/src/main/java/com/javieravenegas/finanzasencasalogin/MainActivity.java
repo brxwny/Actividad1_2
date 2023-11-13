@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText correo, pass;
     private Button registrarse, iniciar;
-    private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
 
     @Override
