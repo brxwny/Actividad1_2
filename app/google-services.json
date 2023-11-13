@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1034956689321",
+    "firebase_url": "https://finanzasencasa-d38b5-default-rtdb.firebaseio.com",
+    "project_id": "finanzasencasa-d38b5",
+    "storage_bucket": "finanzasencasa-d38b5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034956689321:android:e565f14634b6a6bcef7eb8",
+        "android_client_info": {
+          "package_name": "com.javieravenegas.finanzasencasalogin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALbeFs5wpJd79qAyJdnawJlKvM9ur7gAA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

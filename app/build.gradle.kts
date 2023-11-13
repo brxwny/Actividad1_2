@@ -1,5 +1,6 @@
 plugins {
     id("com.android.application")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -39,4 +40,7 @@ dependencies {
     implementation ("org.osmdroid:osmdroid-android:6.1.16")
     implementation ("org.osmdroid:osmdroid-mapsforge:6.1.16")
     implementation ("org.osmdroid:osmdroid-wms:6.1.16")
+    implementation(platform("com.google.firebase:firebase-bom:32.5.0"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-database")
 }
