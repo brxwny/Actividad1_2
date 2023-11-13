@@ -8,16 +8,24 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.google.firebase.Firebase;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.javieravenegas.finanzasencasalogin.models.Usuario;
+
+import java.util.UUID;
 
 public class RegistrarseActivity extends AppCompatActivity {
 
     private Button addNewRegister;
     private EditText nombre, apellido, edad, correo, pass, confirmpass;
+    private String genero;
+    private RadioButton rbFem, rbMasc;
     private RadioGroup rgGenero;
     private CheckBox termycond;
     private FirebaseDatabase firebaseDatabase;
@@ -32,29 +40,61 @@ public class RegistrarseActivity extends AppCompatActivity {
         apellido = findViewById(R.id.txtApellido);
         edad = findViewById(R.id.intEdad);
         rgGenero = findViewById(R.id.radioGroup);
+        rbFem = findViewById(R.id.rbFemenino);
+        rbMasc = findViewById(R.id.rbMasculino);
         correo = findViewById(R.id.txtRegisterCorreo);
         pass = findViewById(R.id.txtRegisterPass2);
         confirmpass = findViewById(R.id.txtRegisterPassConfirm);
         termycond = findViewById(R.id.ckbCondiciones);
         addNewRegister = (Button)findViewById(R.id.btnAccept);
+        inicializarFirebase();
 
         addNewRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int rgSelect = rgGenero.getCheckedRadioButtonId();
+
+                if(rbFem.isChecked()){
+                    genero = "Femenino";
+                }else if(rbMasc.isChecked()){
+                    genero = "Masculino";
+                }else{
+                    genero = "Otro";
+                }
+
                 try {
                     if(nombre.getText().toString().equals("")|| apellido.getText().toString().equals("")|| edad.getText().toString().equals("")|| correo.getText().toString().equals("")||pass.getText().toString().equals("")||confirmpass.getText().toString().equals("")|| rgSelect == -1){
                         Toast.makeText(RegistrarseActivity.this, "Complete todos los datos", Toast.LENGTH_LONG).show();
                     } else if (!termycond.isChecked()) {
                         Toast.makeText(RegistrarseActivity.this, "Acepte los términos y condiciones", Toast.LENGTH_LONG).show();
-                    } else {
+                    } else if (pass.getText().toString().equals(confirmpass.getText().toString())) {
+
+                        Usuario u = new Usuario();
+                        u.setUid(UUID.randomUUID().toString());
+                        u.setNombre(nombre.getText().toString());
+                        u.setApellido(apellido.getText().toString());
+                        u.setEdad(edad.getText().toString());
+                        u.setGenero(genero);
+                        u.setCorreo(correo.getText().toString());
+                        u.setPass(pass.getText().toString());
+
+                        databaseReference.child("Usuario").child(u.getUid()).setValue(u);
+
                         Intent i = new Intent(RegistrarseActivity.this, AddRegisterActivity.class);
                         startActivity(i);
+                    } else {
+                        Toast.makeText(RegistrarseActivity.this, "La contraseña no coincide", Toast.LENGTH_LONG).show();
                     }
                 }catch (Exception e){
                     Toast.makeText(RegistrarseActivity.this, "Algo salió mal", Toast.LENGTH_LONG).show();
                 }
             }
         });
+    }
+
+    private void inicializarFirebase(){
+        FirebaseApp.initializeApp(this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
     }
 }
