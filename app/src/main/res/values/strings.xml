@@ -38,4 +38,5 @@
     <string name="cat">Categorías</string>
     <string name="saveConfig">Guardar cambios</string>
     <string name="infoConfig">Información de la cuenta</string>
+    <string name="cerrarsesion">Cerrar sesión</string>
 </resources>

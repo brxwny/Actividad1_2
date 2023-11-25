@@ -60,7 +60,8 @@
                 android:textSize="15sp"
                 android:textAlignment="center"
                 android:layout_gravity="center"
-                android:layout_marginTop="235dp"
+                android:layout_marginTop="230dp"
+                android:layout_marginBottom="5dp"
                 android:text="" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
