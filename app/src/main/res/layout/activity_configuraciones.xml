@@ -122,7 +122,7 @@
             app:layout_constraintTop_toBottomOf="@+id/intEdadConfig">
 
             <RadioButton
-                android:id="@+id/rbFemenino"
+                android:id="@+id/rbFemeninoConfig"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/rbFemenino"
@@ -131,7 +131,7 @@
                 app:buttonTint="@color/white" />
 
             <RadioButton
-                android:id="@+id/rbMasculino"
+                android:id="@+id/rbMasculinoConfig"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/rbMasculino"
@@ -140,7 +140,7 @@
                 app:buttonTint="@color/white" />
 
             <RadioButton
-                android:id="@+id/rbOtro"
+                android:id="@+id/rbOtroConfig"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/rbOtro"
