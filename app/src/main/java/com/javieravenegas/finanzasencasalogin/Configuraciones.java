@@ -50,14 +50,12 @@ public class Configuraciones extends AppCompatActivity {
                 if (dataSnapshot.exists()) {
                     Usuario usuario = dataSnapshot.getValue(Usuario.class);
 
-                    // Muestra los datos del usuario en los EditText
                     txtNombreConfig.setText(usuario.getNombre());
                     txtApellidoConfig.setText(usuario.getApellido());
                     intEdadConfig.setText(usuario.getEdad());
                     txtCorreoConfig.setText(usuario.getCorreo());
                     txtPassConfig.setText(usuario.getPass());
 
-                    // Dependiendo del género, selecciona el RadioButton correspondiente
                     switch (usuario.getGenero()) {
                         case "Femenino":
                             rbFemenino.setChecked(true);
