@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                     if(correo.getText().toString().equals("")||pass.getText().toString().equals("")){
                         Toast.makeText(MainActivity.this, "Ingrese sus credenciales", Toast.LENGTH_LONG).show();
                     }else{
-                        verificarCredenciales(correo.getText().toString(), pass.getText().toString());
+                        verificarCredenciales(correo.getText().toString().trim(), pass.getText().toString().trim());
                     }
                 }catch (Exception e){
                     Toast.makeText(MainActivity.this, "Algo salió mal", Toast.LENGTH_LONG).show();

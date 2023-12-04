@@ -103,12 +103,17 @@ public class AddCat extends AppCompatActivity {
                 FileOutputStream fos = openFileOutput(crearNombreFoto(), Context.MODE_PRIVATE);
                 bitmapA.compress(Bitmap.CompressFormat.JPEG, 100, fos);
                 fos.close();
+                subirPhoto(Uri.fromFile(getFileStreamPath(nombreimg)));
             }catch (Exception e){
                 Toast.makeText(AddCat.this, "No se pudo guardar la imagen", Toast.LENGTH_LONG).show();
             }
         }else if(requestCode == COD_SEL_IMAGE && resultCode == RESULT_OK ){
-            image_url = data.getData();
-            subirPhoto(image_url);
+            try{
+                image_url = data.getData();
+                subirPhoto(image_url);
+            }catch (Exception e){
+                Toast.makeText(AddCat.this, "No se pudo guardar la imagen", Toast.LENGTH_LONG).show();
+            }
         }
     }
 
@@ -131,10 +136,10 @@ public class AddCat extends AppCompatActivity {
 
         databaseReference.child("Categoria").child(c.getUid()).setValue(c);
 
-        MyData.catFinCvArray = Arrays.copyOf(MyData.catFinCvArray, MyData.catFinCvArray.length + 1);
-        MyData.imgCatFinArray = Arrays.copyOf(MyData.imgCatFinArray, MyData.imgCatFinArray.length + 1);
-        MyData.catFinCvArray[MyData.catFinCvArray.length - 1] = nombreCat;
-        MyData.imgCatFinArray[MyData.imgCatFinArray.length - 1] = getResources().getIdentifier(nombreimg, "drawable", getPackageName());
+        //MyData.catFinCvArray = Arrays.copyOf(MyData.catFinCvArray, MyData.catFinCvArray.length + 1);
+        //MyData.imgCatFinArray = Arrays.copyOf(MyData.imgCatFinArray, MyData.imgCatFinArray.length + 1);
+        //MyData.catFinCvArray[MyData.catFinCvArray.length - 1] = nombreCat;
+        //MyData.imgCatFinArray[MyData.imgCatFinArray.length - 1] = getResources().getIdentifier(nombreimg, "drawable", getPackageName());
 
         Intent in = new Intent(AddCat.this, TusFinanzas.class);
         startActivity(in);

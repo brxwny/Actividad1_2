@@ -95,11 +95,11 @@ public class Configuraciones extends AppCompatActivity {
 
     private void actualizarDatos(){
         try {
-            String nombre = txtNombreConfig.getText().toString();
-            String apellido = txtApellidoConfig.getText().toString();
-            String edad = intEdadConfig.getText().toString();
-            String correo = txtCorreoConfig.getText().toString();
-            String pass = txtPassConfig.getText().toString();
+            String nombre = txtNombreConfig.getText().toString().trim();
+            String apellido = txtApellidoConfig.getText().toString().trim();
+            String edad = intEdadConfig.getText().toString().trim();
+            String correo = txtCorreoConfig.getText().toString().trim();
+            String pass = txtPassConfig.getText().toString().trim();
 
             String genero = "";
             if (rbFemenino.isChecked()) {
