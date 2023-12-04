@@ -47,7 +47,8 @@ public class AddCat extends AppCompatActivity {
     private static final int COD_SEL_IMAGE = 300;
     private Uri image_url;
     private String photo = "photo";
-    private String uidcat, uiduser, download_uri;
+    private String uidcat, uiduser;
+    private String download_uri = "";
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
 
@@ -86,7 +87,17 @@ public class AddCat extends AppCompatActivity {
         finalizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finalizarAddCat();
+                try {
+                    if(nomCat.getText().toString().equals("")||desCat.getText().toString().equals("")||montoAsig.getText().toString().equals("")){
+                        Toast.makeText(AddCat.this, "Complete todos los datos", Toast.LENGTH_LONG).show();
+                    } else if (download_uri.equals("")) {
+                        Toast.makeText(AddCat.this, "Seleccione una imagen", Toast.LENGTH_LONG).show();
+                    }else {
+                        finalizarAddCat();
+                    }
+                }catch (Exception e){
+                    Toast.makeText(AddCat.this, "Error al crear categoría", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
@@ -159,14 +170,13 @@ public class AddCat extends AppCompatActivity {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
-                if(uriTask.isSuccessful()){
-                    uriTask.addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            download_uri = uri.toString();
-                        }
-                    });
-                }
+                uriTask.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        download_uri = uri.toString();
+                        Toast.makeText(AddCat.this, "Imagen agregada con éxito", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
