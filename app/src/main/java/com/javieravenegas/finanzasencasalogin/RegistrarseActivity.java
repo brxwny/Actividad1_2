@@ -71,12 +71,12 @@ public class RegistrarseActivity extends AppCompatActivity {
 
                         Usuario u = new Usuario();
                         u.setUid(UUID.randomUUID().toString());
-                        u.setNombre(nombre.getText().toString());
-                        u.setApellido(apellido.getText().toString());
-                        u.setEdad(edad.getText().toString());
+                        u.setNombre(nombre.getText().toString().trim());
+                        u.setApellido(apellido.getText().toString().trim());
+                        u.setEdad(edad.getText().toString().trim());
                         u.setGenero(genero);
-                        u.setCorreo(correo.getText().toString());
-                        u.setPass(pass.getText().toString());
+                        u.setCorreo(correo.getText().toString().trim());
+                        u.setPass(pass.getText().toString().trim());
 
                         databaseReference.child("Usuario").child(u.getUid()).setValue(u);
 
