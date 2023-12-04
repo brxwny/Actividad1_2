@@ -12,34 +12,22 @@
         android:id="@+id/imgNewCat"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
+        android:background="@color/white"
         android:scaleType="centerCrop"
-        app:layout_constraintEnd_toStartOf="@+id/btn_ElegirFoto"
+        app:layout_constraintEnd_toStartOf="@+id/btn_TomarFoto"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/bordes_img_cv"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_TomarFoto"
         android:layout_width="200dp"
         android:layout_height="48dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="20dp"
         android:backgroundTint="@color/white"
         android:text="Tomar foto"
-        android:textColor="@color/naranjaest"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_ElegirFoto" />
-
-    <Button
-        android:id="@+id/btn_ElegirFoto"
-        android:layout_width="200dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="25dp"
-        android:backgroundTint="@color/white"
-        android:text="Elegir foto de galería"
         android:textColor="@color/naranjaest"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,10 +50,10 @@
         app:layout_constraintTop_toBottomOf="@+id/imgNewCat" />
 
     <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/intMontoAddCat"
         android:layout_width="320dp"
         android:layout_height="55dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="13dp"
         android:backgroundTint="@color/white"
         android:ems="10"
         android:hint="Monto destinado"
@@ -75,14 +63,14 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNomAddCat" />
+        app:layout_constraintTop_toBottomOf="@+id/txtDesAddCat" />
 
     <Button
         android:id="@+id/btn_FinalizarAddCat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="400dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="295dp"
         android:backgroundTint="@color/white"
         android:text="Finalizar"
         android:textColor="@color/naranjaest"
@@ -90,6 +78,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/intMontoAddCat" />
+
+    <EditText
+        android:id="@+id/txtDesAddCat"
+        android:layout_width="320dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/white"
+        android:ems="10"
+        android:hint="Descripción de la categoría"
+        android:inputType="text"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNomAddCat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
