@@ -121,6 +121,7 @@ public class AddCat extends AppCompatActivity {
         }else if(requestCode == COD_SEL_IMAGE && resultCode == RESULT_OK ){
             try{
                 image_url = data.getData();
+                imgAddCat.setImageURI(image_url);
                 subirPhoto(image_url);
             }catch (Exception e){
                 Toast.makeText(AddCat.this, "No se pudo guardar la imagen", Toast.LENGTH_LONG).show();
@@ -181,7 +182,7 @@ public class AddCat extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-
+                Toast.makeText(AddCat.this, "La imagen no pudo ser agregada", Toast.LENGTH_LONG).show();
             }
         });
     }
