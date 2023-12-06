@@ -44,6 +44,7 @@ public class AddIngreso extends AppCompatActivity {
         setContentView(R.layout.activity_add_ingreso);
         capturarId();
         inicializarFirebase();
+        uidcat = "";
 
         nombreIn = findViewById(R.id.txtAddNomIn);
         desIn = findViewById(R.id.txtAddDesIn);
@@ -106,7 +107,6 @@ public class AddIngreso extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     paths.clear();
-                    paths.add("Categoría");
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         Categoria categoria = snapshot.getValue(Categoria.class);
                         if (categoria != null) {

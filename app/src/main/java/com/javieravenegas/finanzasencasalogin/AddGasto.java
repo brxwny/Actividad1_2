@@ -45,6 +45,7 @@ public class AddGasto extends AppCompatActivity {
         setContentView(R.layout.activity_add_gasto);
         capturarId();
         inicializarFirebase();
+        uidcat = "";
 
         nombreGas = findViewById(R.id.txtAddNomGast);
         desGast = findViewById(R.id.txtAddDesGast);
@@ -104,9 +105,8 @@ public class AddGasto extends AppCompatActivity {
         databaseReference.child("Categoria").orderByChild("uiduser").equalTo(uiduser).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                paths.clear();
                 if (dataSnapshot.exists()) {
-                    paths.clear();
-                    paths.add("Categoría");
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         Categoria categoria = snapshot.getValue(Categoria.class);
                         if (categoria != null) {
@@ -138,7 +138,6 @@ public class AddGasto extends AppCompatActivity {
                         Categoria categoria = snapshot.getValue(Categoria.class);
                         if (categoria != null && categoria.getUiduser().equals(uiduser)) {
                             uidcat = categoria.getUid();
-                            Toast.makeText(AddGasto.this, "Seleccionaste: " + nombreCategoria + " con uid: " + uidcat, Toast.LENGTH_LONG).show();
                         }
                     }
                 } else {
