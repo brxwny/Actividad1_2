@@ -47,7 +47,7 @@
                     android:layout_marginTop="4dp"/>
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/txtPresupuestoActual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/cardviewlett"
@@ -58,7 +58,7 @@
                     android:text="$123456" />
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/txtUltimaAct"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Última actualización: 10/10/2023 14:34"

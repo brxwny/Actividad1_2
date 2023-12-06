@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
@@ -21,6 +22,7 @@ import com.javieravenegas.finanzasencasalogin.models.Usuario;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ImageButton twt, google, face;
     private EditText correo, pass;
     private Button registrarse, iniciar;
     private DatabaseReference databaseReference;
@@ -33,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
         iniciar = (Button)findViewById(R.id.btnLogin);
         correo = (EditText)findViewById(R.id.txtCorreo);
         pass = findViewById(R.id.txtPassword);
+        twt = findViewById(R.id.btntwt);
+        google = findViewById(R.id.btngoogle);
+        face = findViewById(R.id.btnface);
+
         inicializarFirebase();
 
         registrarse.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +61,30 @@ public class MainActivity extends AppCompatActivity {
                 }catch (Exception e){
                     Toast.makeText(MainActivity.this, "Algo salió mal", Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        twt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, AddInversion.class);
+                startActivity(i);
+            }
+        });
+
+        google.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, AddInversion.class);
+                startActivity(i);
+            }
+        });
+
+        face.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, AddInversion.class);
+                startActivity(i);
             }
         });
     }
