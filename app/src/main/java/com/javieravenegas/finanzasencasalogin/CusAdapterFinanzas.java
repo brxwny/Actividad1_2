@@ -10,49 +10,50 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
-public class CusAdapterFinanzas extends RecyclerView.Adapter<CusAdapterFinanzas.FinanzasViewHolder>{
+public class CusAdapterFinanzas extends RecyclerView.Adapter<CusAdapterFinanzas.MyViewHolder>{
 
-    private ArrayList<DataModel> dataSet;
+    private ArrayList<DataModelF> dataSet;
     private Context context;
-    private LayoutInflater inflater;
 
-    public CusAdapterFinanzas(Context context, ArrayList<DataModel> data) {
-        this.dataSet = data;
-        this.context = context;
-        this.inflater = LayoutInflater.from(context);
-    }
-
-    public static class FinanzasViewHolder extends RecyclerView.ViewHolder{
-        TextView txtCvFinanzas;
-        ImageView imgCvFinanzas;
-
-        public FinanzasViewHolder(View itemView){
-            super(itemView);
-            this.txtCvFinanzas = (TextView) itemView.findViewById(R.id.txtCvFinanzas);
-            this.imgCvFinanzas = (ImageView) itemView.findViewById(R.id.imgCvFinanzas);
-        }
-    }
-
+    @NonNull
     @Override
-    public FinanzasViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardsfinanzas_layout, parent, false);
-        CusAdapterFinanzas.FinanzasViewHolder finanzasViewHolder = new CusAdapterFinanzas.FinanzasViewHolder(view);
-        return finanzasViewHolder;
+        return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final CusAdapterFinanzas.FinanzasViewHolder holder, final int listPosition) {
-        TextView txtCvFinanzas = holder.txtCvFinanzas;
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
+        TextView txtCvFinanzas = holder.txtCVFinanzas;
         ImageView imgCvFinanzas = holder.imgCvFinanzas;
 
-        txtCvFinanzas.setText(dataSet.get(listPosition).getNombre());
-        imgCvFinanzas.setImageResource(dataSet.get(listPosition).getImagen());
+        txtCvFinanzas.setText(dataSet.get(position).getNombre());
+
+        Picasso.get().load(dataSet.get(position).getImagenUrl()).into(imgCvFinanzas);
     }
 
     @Override
     public int getItemCount() {
         return dataSet.size();
+    }
+
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView txtCVFinanzas;
+        ImageView imgCvFinanzas;
+
+        public MyViewHolder(View itemView) {
+            super(itemView);
+            this.txtCVFinanzas = itemView.findViewById(R.id.txtCvFinanzas);
+            this.imgCvFinanzas = itemView.findViewById(R.id.imgCvFinanzas);
+        }
+    }
+
+    public CusAdapterFinanzas(ArrayList<DataModelF> dataSet, Context context) {
+        this.dataSet = dataSet;
+        this.context = context;
     }
 }
