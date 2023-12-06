@@ -84,7 +84,11 @@ public class RegistrarseActivity extends AppCompatActivity {
                         Finanzas f = new Finanzas();
                         f.setUid(UUID.randomUUID().toString());
                         f.setUiduser(u.getUid());
-                        databaseReference.child("Finanzas").child(f.getUid()).setValue(f);
+                        f.setPresupuesto("");
+                        f.setIngresos("");
+                        f.setGastos("");
+                        f.setFecha(System.currentTimeMillis());
+                        databaseReference.child("Finanzas").child(f.getUiduser()).setValue(f);
 
                         Intent i = new Intent(RegistrarseActivity.this, AddRegisterActivity.class);
                         startActivity(i);

@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.javieravenegas.finanzasencasalogin.models.Categoria;
+import com.javieravenegas.finanzasencasalogin.models.Finanzas;
 import com.javieravenegas.finanzasencasalogin.models.Ingreso;
 
 import java.util.ArrayList;
@@ -32,9 +33,10 @@ public class AddIngreso extends AppCompatActivity {
     private Button finalizar;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
-    private String uiduser, uid, uidcat;;
+    private String uiduser, uid, uidcat, ingresan;
     private EditText nombreIn, desIn, montoIn;
     private long fechaIn;
+    private int addF;
     private Spinner spinner;
     private List<String> paths = new ArrayList<>();
     @Override
@@ -79,7 +81,10 @@ public class AddIngreso extends AppCompatActivity {
                     Toast.makeText(AddIngreso.this, "Debe completar los campos obligatorios", Toast.LENGTH_LONG).show();
                 }else{
                     try {
+                        ingresan = montoIn.getText().toString();
+                        addF = Integer.parseInt(ingresan);
                         crearNuevoRegistro();
+                        actualizarFinanzas();
                         Intent i = new Intent(AddIngreso.this, TusIngresos.class);
                         startActivity(i);
                     }catch (Exception e){
@@ -163,5 +168,41 @@ public class AddIngreso extends AppCompatActivity {
         i.setUidcat(uidcat);
 
         databaseReference.child("Ingresos").child(i.getUid()).setValue(i);
+    }
+
+    public void actualizarFinanzas(){
+        DatabaseReference finanzasRef = databaseReference.child("Finanzas").child(uiduser);
+
+        finanzasRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    Finanzas finanzas = dataSnapshot.getValue(Finanzas.class);
+                    if (finanzas != null) {
+                        String inT = finanzas.getIngresos();
+                        if (inT.equals("")) {
+                            databaseReference.child("Finanzas").child(uiduser).child("ingresos").setValue(ingresan);
+                        } else {
+                            int ingresosTotales = Integer.parseInt(inT);
+                            int addFinanzas = ingresosTotales + addF;
+                            String ingresos = String.valueOf(addFinanzas);
+                            databaseReference.child("Finanzas").child(uiduser).child("ingresos").setValue(ingresos);
+                            databaseReference.child("Finanzas").child(uiduser).child("uid").setValue(finanzas.getUid());
+                            databaseReference.child("Finanzas").child(uiduser).child("uiduser").setValue(finanzas.getUiduser());
+                            databaseReference.child("Finanzas").child(uiduser).child("presupuesto").setValue(finanzas.getPresupuesto());
+                            databaseReference.child("Finanzas").child(uiduser).child("gastos").setValue(finanzas.getGastos());
+                            databaseReference.child("Finanzas").child(uiduser).child("fecha").setValue(fechaIn);
+                        }
+                    }
+                } else {
+                    Toast.makeText(AddIngreso.this, "No se encontró el registro de Finanzas", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Manejar el error...
+            }
+        });
     }
 }
