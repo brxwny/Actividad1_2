@@ -16,6 +16,7 @@ import com.google.firebase.Firebase;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.javieravenegas.finanzasencasalogin.models.Finanzas;
 import com.javieravenegas.finanzasencasalogin.models.Usuario;
 
 import java.util.UUID;
@@ -79,6 +80,11 @@ public class RegistrarseActivity extends AppCompatActivity {
                         u.setPass(pass.getText().toString().trim());
 
                         databaseReference.child("Usuario").child(u.getUid()).setValue(u);
+
+                        Finanzas f = new Finanzas();
+                        f.setUid(UUID.randomUUID().toString());
+                        f.setUiduser(u.getUid());
+                        databaseReference.child("Finanzas").child(f.getUid()).setValue(f);
 
                         Intent i = new Intent(RegistrarseActivity.this, AddRegisterActivity.class);
                         startActivity(i);
