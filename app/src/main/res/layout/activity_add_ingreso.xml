@@ -60,7 +60,7 @@
         android:id="@+id/spinnerCatIn"
         android:layout_width="342dp"
         android:layout_height="55dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="38dp"
         android:backgroundTint="@color/white"
         android:popupBackground="#F6A356"
         android:spinnerMode="dropdown"
@@ -69,24 +69,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/intMontoAddIn" />
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="112dp"
-        android:text="*El parámetro categoría es opcional"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/spinnerCatIn"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCatIn" />
-
     <Button
         android:id="@+id/btn_FinalizarAddIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="295dp"
+        android:layout_marginBottom="300dp"
         android:backgroundTint="@color/white"
         android:text="Finalizar"
         android:textColor="@color/naranjaest"
@@ -95,4 +83,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerCatIn" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="242dp"
+        android:layout_marginBottom="5dp"
+        android:text="Categoría"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerCatIn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/intMontoAddIn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

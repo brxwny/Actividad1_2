@@ -138,7 +138,6 @@ public class AddIngreso extends AppCompatActivity {
                         Categoria categoria = snapshot.getValue(Categoria.class);
                         if (categoria != null && categoria.getUiduser().equals(uiduser)) {
                             uidcat = categoria.getUid();
-                            Toast.makeText(AddIngreso.this, "Seleccionaste: " + nombreCategoria + " con uid: " + uidcat, Toast.LENGTH_LONG).show();
                         }
                     }
                 } else {
