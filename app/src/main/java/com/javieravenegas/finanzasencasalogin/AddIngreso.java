@@ -1,5 +1,6 @@
 package com.javieravenegas.finanzasencasalogin;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
@@ -10,53 +11,57 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.javieravenegas.finanzasencasalogin.models.Categoria;
+import com.javieravenegas.finanzasencasalogin.models.Ingreso;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 public class AddIngreso extends AppCompatActivity {
     private Button finalizar;
-
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
-    private String uiduser;
-
+    private String uiduser, uid, uidcat;;
+    private EditText nombreIn, desIn, montoIn;
+    private long fechaIn;
     private Spinner spinner;
-    private String[] paths = {"Categorías","Libros"};
+    private List<String> paths = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setContentView(R.layout.activity_add_ingreso);
-
         capturarId();
         inicializarFirebase();
 
+        nombreIn = findViewById(R.id.txtAddNomIn);
+        desIn = findViewById(R.id.txtAddDesIn);
+        montoIn = findViewById(R.id.intMontoAddIn);
         finalizar = findViewById(R.id.btn_FinalizarAddIn);
         spinner = findViewById(R.id.spinnerCatIn);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(AddIngreso.this, R.layout.spinner_personalizado,paths);
+        uid = UUID.randomUUID().toString();
+        fechaIn = System.currentTimeMillis();
+        cargarCat();
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View v, int position, long id) {
-                switch (position) {
-                    case 0:
-                        Toast.makeText(AddIngreso.this, "Ninguna elegida", Toast.LENGTH_LONG).show();
-                        break;
-                    case 1:
-                        Toast.makeText(AddIngreso.this, "Cat 1 elegida", Toast.LENGTH_LONG).show();
-                        break;
-                    case 2:
-                        Toast.makeText(AddIngreso.this, "Cat 2 elegida", Toast.LENGTH_LONG).show();
-                        break;
-                    case 3:
-                        Toast.makeText(AddIngreso.this, "Cat 3 elegida", Toast.LENGTH_LONG).show();
-                        break;
+                String selectedCategory = paths.get(position);
+                if (!selectedCategory.equals("Categoría")) {
+                    obtenerUidCategoria(selectedCategory);
+                }else{
+                    uidcat = "";
                 }
             }
 
@@ -69,8 +74,17 @@ public class AddIngreso extends AppCompatActivity {
         finalizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(AddIngreso.this, TusIngresos.class);
-                startActivity(i);
+                if(nombreIn.getText().toString().equals("")||desIn.getText().toString().equals("")||montoIn.getText().toString().equals("")){
+                    Toast.makeText(AddIngreso.this, "Debe completar los campos obligatorios", Toast.LENGTH_LONG).show();
+                }else{
+                    try {
+                        crearNuevoRegistro();
+                        Intent i = new Intent(AddIngreso.this, TusIngresos.class);
+                        startActivity(i);
+                    }catch (Exception e){
+                        Toast.makeText(AddIngreso.this, "Error al añadir ingreso", Toast.LENGTH_LONG).show();
+                    }
+                }
             }
         });
     }
@@ -84,5 +98,71 @@ public class AddIngreso extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
+    }
+
+    private void cargarCat(){
+        databaseReference.child("Categoria").orderByChild("uiduser").equalTo(uiduser).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    paths.clear();
+                    paths.add("Categoría");
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Categoria categoria = snapshot.getValue(Categoria.class);
+                        if (categoria != null) {
+                            String nombreCategoria = categoria.getNombre();
+                            paths.add(nombreCategoria);
+                        }
+                    }
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(AddIngreso.this, R.layout.spinner_personalizado, paths);
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinner.setAdapter(adapter);
+                } else {
+                    Toast.makeText(AddIngreso.this, "No se encontraron categorías", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(AddIngreso.this, "Error en la consulta a la base de datos", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void obtenerUidCategoria(final String nombreCategoria){
+        databaseReference.child("Categoria").orderByChild("nombre").equalTo(nombreCategoria).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Categoria categoria = snapshot.getValue(Categoria.class);
+                        if (categoria != null && categoria.getUiduser().equals(uiduser)) {
+                            uidcat = categoria.getUid();
+                            Toast.makeText(AddIngreso.this, "Seleccionaste: " + nombreCategoria + " con uid: " + uidcat, Toast.LENGTH_LONG).show();
+                        }
+                    }
+                } else {
+                    Toast.makeText(AddIngreso.this, "No se encontró la categoría", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(AddIngreso.this, "Error en la consulta a la base de datos", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    public void crearNuevoRegistro(){
+        Ingreso i = new Ingreso();
+        i.setUid(uid);
+        i.setUiduser(uiduser);
+        i.setFecha(fechaIn);
+        i.setNombre(nombreIn.getText().toString());
+        i.setDescripcion(desIn.getText().toString());
+        i.setMonto(montoIn.getText().toString().trim());
+        i.setUidcat(uidcat);
+
+        databaseReference.child("Ingresos").child(i.getUid()).setValue(i);
     }
 }

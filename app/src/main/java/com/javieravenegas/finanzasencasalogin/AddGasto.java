@@ -35,7 +35,6 @@ public class AddGasto extends AppCompatActivity {
     private String uiduser, uid, uidcat;
     private EditText nombreGas, desGast, montoGas;
     private long fechaGast;
-
     private Spinner spinner;
     private List<String> paths = new ArrayList<>();
 
