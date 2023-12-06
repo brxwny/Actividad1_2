@@ -52,6 +52,6 @@ public class AdapterGast extends RecyclerView.Adapter<AdapterGast.MyViewHolder>{
     public AdapterGast(ArrayList<DataModelG> dataSet, Context context) {
         this.dataSet = dataSet;
         this.context = context;
-        this.inflater = LayoutInflater.from(context);;
+        this.inflater = LayoutInflater.from(context);
     }
 }
