@@ -28,7 +28,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="8dp"
-        android:text="A continuación podrás encontrar las opiniones de otros usuarios de diferentes servicios, en base a esto podrás cotizar y encontrar las mejores opciones acorde a tu bolsillo."
+        android:text="A continuación podrás encontrar la ubicación de diferentes servicios que son de utilidad."
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="16sp"
